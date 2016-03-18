@@ -31,7 +31,7 @@ CREATE PAGE
 ////////////////*/
 
 .titleInput, .create, .homeButton {
-  background: rgba(228, 224, 224, 0.47);
+  /*background: rgba(228, 224, 224, 0.47);*/
   border: #000;
   border-radius: 4px;
   color: #515b61;
@@ -43,21 +43,33 @@ CREATE PAGE
   /*text-shadow: 1px -1px 2px #0a090a;*/
 }
 
-.plotPage,.map_div {
+.plotPage,.map_div,.list_div {
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
 }
 
-.map {
+.map, .list{
     flex: 1;
     position: relative;
     overflow: hidden;
     transform: translateZ(0px);
-    background-color: rgb(229, 227, 223);
+    background: rgba(228, 224, 224, 0.47);
 }
 
+.list {
+  overflow-y: scroll;
+}
+
+.map {
+   background-color: rgb(229, 227, 223);
+}
+
+/*.map .map1 {*/
+/*    transform: initial;*/
+/*    position: initial;*/
+/*}*/
 
 /*////////////////
 LIST PAGE
@@ -75,13 +87,13 @@ LIST PAGE
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    margin: 0;
+    margin: 0.5em 0;
     padding: 0;
 }
 
 .listItem {
   list-style: none;
-  margin: 5px 10px;
+  margin: 0.3em 0.5em;
 }
 
 /*.itemButton {
@@ -220,6 +232,12 @@ CRUMB MENU
 VIEW PAGE
 ////////////////*/
 
+.viewTitleDiv, .listTitleDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 
 .main1 {
   display: flex;
@@ -231,24 +249,25 @@ VIEW PAGE
   min-height: 100vh;
 }
 
-.map1 {
-  flex: 3;
-  border: 2px solid red;
-}
+/*.map1 {*/
+/*  flex: 3;*/
+/*  border: 2px solid red;*/
+/*}*/
 
 #buttonsDiv {
   display: flex;
   /*flex-wrap: wrap;*/
   flex-direction: row;
   flex: 0 54px;
+  margin: 0.5em;
 }
 
 
 
-.itemButton, .nextButton, .startButton, .locate {
+.itemButton, .nextButton, .startButton, .locate, .homeBut, .createButton {
   font-size: 1.3em;
   font-family: 'Roboto', 'Helvetica', sans-serif;
-  padding: 10px;
+  padding: 0.5em;
   z-index: 100;
   border: none;
   border-radius: 4px;
@@ -256,24 +275,29 @@ VIEW PAGE
   margin: 0;
 }
 
-.nextButton, .startButton, .locate {
+.nextButton, .startButton, .locate, .homeBut, .createButton{
   text-align: center;
   margin: 5px;
 }
 
-.nextButton, .startButton {
+.nextButton, .startButton, .createLink, .createButton {
   flex-grow: 4;
 }
-.locate {
-  flex-grow: 0;
+
+.createLink {
+  display: flex;
 }
 
+.locate, .homeLink {
+  flex-grow: 0;
+  
+}
 
-.nextButton, .startButton {
+.nextButton, .startButton, .createButton{
   background-color: mediumaquamarine;
 }
 
-.itemButton, .locate{
+.itemButton, .locate, .homeBut {
   background-color: silver;
 }
 
@@ -282,11 +306,11 @@ VIEW PAGE
   text-align: left;
 }
 
-.locate:active:hover , .itemButton:active:hover {
+.locate:active:hover , .itemButton:active:hover, .homeBut:active:hover {
   background-color: #ee5500;
 }
 
-.nextButton:active:hover , .startButton:active:hover {
+.nextButton:active:hover , .startButton:active:hover, .createButton:active:hover {
   background-color: lightgreen;
 }
 
@@ -301,20 +325,21 @@ a:link {
 h1 {
   border: none;
   margin: 0;
-  padding: 10px;
+  padding: 15px 10px;
   font-size: 1.3em;
   font-weight: bold;
   text-transform: uppercase;
   /*width: 100vw;*/
-  width: 100%;
-  background: rgba(228, 224, 224, 0.47);
+  /*width: 100%;*/
+  /*background: rgba(228, 224, 224, 0.47);*/
   z-index: 100;
   color: #515b61;
+  flex-grow: 4;
   /*text-decoration: none;*/
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
-.fa-location-arrow {
+.fa-location-arrow, .fa-home {
   padding-left: 5px;
   padding-right: 5px;
   flex: 1;
@@ -332,8 +357,8 @@ HOME PAGE
 .homePage {
     align-content: stretch;
     align-items: center;
-    background-color: rgb(20,35,57);
-    background-image: linear-gradient( 70deg, rgb(20,35,57), rgb(147,0,15), rgb(249,174,0), rgb(147,0,15), rgb(20,35,57) );
+    /*background-color: rgb(20,35,57);*/
+    /*background-image: linear-gradient( 70deg, rgb(20,35,57), rgb(147,0,15), rgb(249,174,0), rgb(147,0,15), rgb(20,35,57) );*/
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -360,7 +385,7 @@ HOME PAGE
 
 .hPWhite {
     align-items: center;
-    background-image: url("../images/puffins-in-snow-1500x1500.jpg");
+    background-image: url("../images/puffins-in-snow-1500x1500-gray.png");
     background-position: 50% 80%;
     background-size: cover;
     display: flex;
@@ -375,9 +400,43 @@ HOME PAGE
 
 .homeButton {
     padding: 1.2em;
+    margin: 1em;
     width: 30vw;
+    flex-grow: 1;
+    flex-basis: 100%;
+    box-shadow: 0.1em 0.2em 1em rgba(0, 0, 0, 0.3);
+    background-color: #032D3F;
+    font-family:  'Roboto', 'Helvetica', sans-serif;
+    font-weight: bold;
+    color: #FFF;
+    opacity: 0.8;
+    
+}
+
+.homeButton:hover:active {
+  opacity: 1;
+  box-shadow: none;
+}
+
+.homeButtonsDiv {
+  /*position:absolute;*/
+  /*top:60%;*/
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow:1;
+  /*left:50%;*/
 }
 
 .emptyHP {
-    height: 15vh;
+    /*height: 15vh;*/
+    flex-grow: 3;
+    padding: 5em 1em 0 1em;
+}
+
+.homeImage {
+  width: auto;
+  height: 100%;
+  /*min-width: 100px;*/
 }

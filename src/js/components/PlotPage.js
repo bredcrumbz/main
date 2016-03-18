@@ -3,7 +3,7 @@
 import EventEmitter from '../event-emitter';
 
 import React from "react";
-import {browserHistory} from "react-router";
+import {browserHistory, Link} from "react-router";
 import request from "superagent";
 
 import ReactDOM from "react-dom";
@@ -12,8 +12,7 @@ injectTapEventPlugin();
 
 //Child Components
 import PlotMap from "./PlotMap";
-
-import {CreateMenu} from "./CrumbMenu"
+import {CreateMenu} from "./CrumbMenu";
 
 export default React.createClass({
 
@@ -176,13 +175,17 @@ export default React.createClass({
     //state to dislay the menu
   },
 
+
   render: function() {
     return (
       <div className="plotPage">
         <CreateMenu ref="createMenu"/>
         <input autoComplete="off" className= "titleInput" onKeyUp={this.handleKey} type="text" maxLength='60' name="pathTitle" ref= "title" placeholder="Name your path"/>
        <PlotMap className= "map" center={this.state.center} crumbs={this.state.crumbs} clickMarker={this.clickMarker} onClick= {this.handleMapClick} />
-       <button className="create" onClick={this.handleClick}>Leave a trail</button>
+       <div id="buttonsDiv">
+            <button className="createButton" onClick={this.handleClick}>Leave a trail</button>
+            <Link className="homeLink" to="/"><button className="homeBut" alt="Home!" ><i className="fa fa-home"></i></button></Link>
+        </div>
      </div>
     )
   }

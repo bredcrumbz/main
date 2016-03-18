@@ -25,14 +25,7 @@ module.exports = {
   },
   devtool: 'sourcemap',
   postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
-  plugins: [new webpack.optimize.UglifyJsPlugin()]
-}
-
-
-// [
-//     autoprefixer ({
-//       path: ['./src/css']
-//     })
-    
-//     ]
-
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ]
+};
